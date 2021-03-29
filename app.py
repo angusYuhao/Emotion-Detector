@@ -6,6 +6,7 @@ from PIL import Image
 # imports for the artificial intelligence model and other functions 
 import torchvision
 import torchvision.models as models
+import torchvision.transforms as transforms
 import torch 
 import torch.nn as nn
 import numpy as np
@@ -50,15 +51,18 @@ def prediction():
     # convert image to right type and dimensions 
     img = get_image('array')
     img = Image.fromarray(img, 'RGB')
-    img = img.resize((224, 224))
+    transform_img = transforms.Compose([transforms.CenterCrop(224), transforms.ToTensor(), 
+                                        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]), 
+                                        transforms.RandomRotation((-10, 10), expand=False, center=None, fill=0, resample=None),
+                                        transforms.RandomHorizontalFlip(p=0.5)])
+    img = transform_img(img)
     img = np.array(img)
     img = torch.from_numpy(img)
-    print(img)
-    print(img.shape)
+    img.unsqueeze_(0)
 
     # put image through model and obtain prediction 
-    # pred = vgg_model(img)
-    # print(pred)
+    pred = vgg_model(img)
+    print(pred)
 
 @app.route('/image')
 def image():
