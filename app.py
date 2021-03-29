@@ -14,6 +14,10 @@ import numpy as np
 app = Flask(__name__) # instantiates a Flask application
 camera = cv2.VideoCapture(0) # used for webcam capture 
 
+# images used when captured to display and feed into our model
+display_img = None
+predict_img = None
+
 # returns a stream of webcam VIDEO capture 
 def generate_frames(): 
     while True:
@@ -41,7 +45,7 @@ def get_image(ret_type):
             return frame
 
 # gets the prediction of the mood from the image 
-def prediction():
+def prediction(img):
     # load model 
     vgg_model = models.vgg16(pretrained=False)
     vgg_model.classifier[6] = nn.Linear(4096, 7) # sets output classes to 7 emotions 
@@ -49,7 +53,6 @@ def prediction():
     vgg_model.load_state_dict(state)
 
     # convert image to right type and dimensions 
-    img = get_image('array')
     img = Image.fromarray(img, 'RGB')
     transform_img = transforms.Compose([transforms.CenterCrop(224), transforms.ToTensor(), 
                                         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]), 
@@ -66,8 +69,10 @@ def prediction():
 
 @app.route('/image')
 def image():
-    prediction()
-    return Response(get_image('bytes'), mimetype='multipart/x-mixed-replace; boundary=frame')
+    # instead of grabbing a new image here, pass in display_img and predict_img when we pressed the button
+    prediction(predict_img)
+    return Response(display_img, mimetype='multipart/x-mixed-replace; boundary=frame')
+    # return Response(prediction(), mimetype='multipart/x-mixed-replace; boundary=frame')
     
 @app.route('/result')
 def result():
@@ -75,6 +80,11 @@ def result():
     
 @app.route('/button', methods=["GET", "POST"])
 def button():
+    # save the image captured in display_img and the prediction image in predict_img
+    global display_img
+    global predict_img
+    display_img = get_image('bytes')
+    predict_img = get_image('array')
     return redirect(url_for('result'))
 
 @app.route('/video')
