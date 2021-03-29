@@ -67,6 +67,16 @@ def prediction(img):
     pred = vgg_model(img)
     print(pred)
 
+    max = 0
+    label_test = ["angry", "fatigue", "fear", "happy", "neutral", "sad", "surprise"]
+    for i, x in enumerate(pred):
+        for j, y in enumerate(pred[i]):
+            if(y > max):
+                max = y
+                label = label_test[j]
+    print(label)
+    print(pred)
+
 @app.route('/image')
 def image():
     # instead of grabbing a new image here, pass in display_img and predict_img when we pressed the button
