@@ -55,10 +55,12 @@ def prediction(img):
 
     # convert image to right type and dimensions 
     img = Image.fromarray(img, 'RGB')
+    
     transform_img = transforms.Compose([transforms.CenterCrop(224), transforms.ToTensor(), 
                                         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]), 
                                         transforms.RandomRotation((-10, 10), expand=False, center=None, fill=0, resample=None),
-                                        transforms.RandomHorizontalFlip(p=0.5)])
+                                        transforms.RandomHorizontalFlip(p=0.5), transforms.Grayscale(num_output_channels=3)])
+    
     img = transform_img(img)
     img = np.array(img)
     img = torch.from_numpy(img)
@@ -83,13 +85,12 @@ def prediction(img):
 @app.route('/image')
 def image():
     # instead of grabbing a new image here, pass in display_img and predict_img when we pressed the button
-    global display_label
-    display_label = prediction(predict_img)
     return Response(display_img, mimetype='multipart/x-mixed-replace; boundary=frame')
-    # return Response(prediction(), mimetype='multipart/x-mixed-replace; boundary=frame')
     
 @app.route('/result')
 def result():
+    global display_label
+    display_label = prediction(predict_img)
     return render_template('result.html', label=display_label)
     
 @app.route('/button', methods=["GET", "POST"])
