@@ -93,14 +93,18 @@ def result():
     display_label = prediction(predict_img)
     return render_template('result.html', label=display_label)
     
-@app.route('/button', methods=["GET", "POST"])
-def button():
+@app.route('/button_capture', methods=["GET", "POST"])
+def button_capture():
     # save the image captured in display_img and the prediction image in predict_img
     global display_img
     global predict_img
     display_img = get_image('bytes')
     predict_img = get_image('array')
     return redirect(url_for('result'))
+
+@app.route('/button_again', methods=["GET", "POST"])
+def button_again():   
+    return redirect(url_for('index'))
 
 @app.route('/video')
 def video():
