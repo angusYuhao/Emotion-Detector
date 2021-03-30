@@ -7,6 +7,8 @@
         <meta charset="utf-8">
         <meta nam="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/result.css') }}">
+
         <title>Mood Detector</title>
 
     </head>
@@ -16,12 +18,12 @@
 
         <!-- displays the resulting image -->
         <div>
-            <img src="{{ url_for('image') }}" width="50%">
+            <img class="center" id="image" src="{{ url_for('image') }}" width="50%">
         </div>
 
         <div>
             <form method="POST" action="/button_again">
-                <input type="submit" value="Try Again!">
+                <input class="center" id="button_again" type="submit" value="Try Again!">
             </form>
         </div>
 

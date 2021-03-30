@@ -9,6 +9,8 @@
 
         <title>Mood Detector</title>
 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/home.css') }}">
+
     </head>
     <body>
 
@@ -16,13 +18,13 @@
 
         <!-- used for displaying the webcam capture -->
         <div>
-            <img src="{{ url_for('video') }}" width="50%">
+            <img class="center" id="video" src="{{ url_for('video') }}">
         </div>
 
         <!-- used for predicting the emotion -->
         <div>
             <form method="POST" action="/button_capture">
-                <input type="submit" value="Capture">
+                <input class="center" id="button_capture" type="submit" value="Capture">
             </form>
         </div>
 

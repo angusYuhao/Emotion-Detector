@@ -104,7 +104,7 @@ def button_capture():
 
 @app.route('/button_again', methods=["GET", "POST"])
 def button_again():   
-    return redirect(url_for('index'))
+    return redirect(url_for('index')) 
 
 @app.route('/video')
 def video():
