@@ -15,9 +15,8 @@
     <body>
 
         <h1>Mood Detector</h1>
-
         <!-- used for displaying the webcam capture -->
-        <div>
+        <div class="videodiv">
             <img class="center" id="video" src="{{ url_for('video') }}">
         </div>
 
@@ -27,6 +26,7 @@
                 <input id="button_capture" type="submit" value="Capture">
             </form>
         </div>
+        <h3 class="center">Please place your face in the middle of the screen and click capture</h3>
 
     </body>
 

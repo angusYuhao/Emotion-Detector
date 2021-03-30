@@ -1,9 +1,13 @@
+body {
+    background-color: #fafafa;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
 }
 
-h1 {
-    text-align: center;
+#title {
+    margin-left: 30px;
 }
 
 .center {
@@ -13,17 +17,37 @@ h1 {
     width: 50%;
 }
 
-#image {}
+#image {
+    position: relative;
+    float: left;
+    margin-left: 30px;
+}
+
+#results {
+    font-size: 3em;
+    position: relative;
+    float: right;
+    margin-top: 100px;
+    margin-right: 200px;
+    overflow: hidden;
+}
+
+#label {
+    text-align: center;
+    color: #d32f2f;
+}
 
 #button_again {
+    position: absolute;
+    left: auto;
+    right: 200px;
+    top: auto;
+    bottom: 300px;
     outline: none;
-    margin-top: 10px;
-    margin-left: 1060px;
     border: none;
     padding: 10px;
     border-radius: 5px;
     background-color:  #512da8;
     color: white;
-    font-family: 'Poppins', sans-serif;
     cursor: pointer;
 }

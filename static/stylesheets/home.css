@@ -1,9 +1,13 @@
+body {
+    background-color: #fafafa;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
 }
 
 h1 {
-    text-align: center;
+    margin-left: 30px;
 }
 
 .center {
@@ -13,19 +17,27 @@ h1 {
     width: 50%;
 }
 
+
 #video {
     
 }
 
 #button_capture {
+    position: absolute;
+    left: auto;
+    right: 290px;
+    top: auto;
+    bottom: 67px;
     outline: none;
-    margin-top: 10px;
-    margin-left: 1065px;
     border: none;
     padding: 10px;
     border-radius: 5px;
     background-color:  #512da8;
     color: white;
-    font-family: 'Poppins', sans-serif;
     cursor: pointer;
+}
+
+h3 {
+    text-align: center;
+    color: #d32f2f;
 }

@@ -13,13 +13,15 @@
 
     </head>
     <body>
-
-        <h1>Your results are: {{ label }}</h1>
+        <h1 id="title">Mood detector</h1>
+        
 
         <!-- displays the resulting image -->
         <div>
-            <img class="center" id="image" src="{{ url_for('image') }}" width="50%">
+            <img id="image" src="{{ url_for('image') }}" width="50%">
         </div>
+
+        <h1 id="results">Your are currently: <br><span id="label">{{ label }}</strong></h1>
 
         <div>
             <form method="POST" action="/button_again">
