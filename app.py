@@ -17,6 +17,7 @@ camera = cv2.VideoCapture(0) # used for webcam capture
 # images used when captured to display and feed into our model
 display_img = None
 predict_img = None
+display_label = None
 
 # returns a stream of webcam VIDEO capture 
 def generate_frames(): 
@@ -77,16 +78,19 @@ def prediction(img):
     print(label)
     print(pred)
 
+    return label
+
 @app.route('/image')
 def image():
     # instead of grabbing a new image here, pass in display_img and predict_img when we pressed the button
-    prediction(predict_img)
+    global display_label
+    display_label = prediction(predict_img)
     return Response(display_img, mimetype='multipart/x-mixed-replace; boundary=frame')
     # return Response(prediction(), mimetype='multipart/x-mixed-replace; boundary=frame')
     
 @app.route('/result')
 def result():
-    return render_template('result.html')
+    return render_template('result.html', label=display_label)
     
 @app.route('/button', methods=["GET", "POST"])
 def button():
