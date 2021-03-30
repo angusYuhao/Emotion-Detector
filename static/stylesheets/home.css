@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 h1 {
     text-align: center;
 }
@@ -9,6 +13,19 @@ h1 {
     width: 50%;
 }
 
-#video {}
+#video {
+    
+}
 
-#button_capture {}
+#button_capture {
+    outline: none;
+    margin-top: 10px;
+    margin-left: 1065px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color:  #512da8;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
