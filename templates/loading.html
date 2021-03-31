@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta nam="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/loading.css') }}">
+
+        <title>Mood Detector</title>
+
+    </head>
+    <body>
+
+        <h1 id="title">Mood detector</h1>
+
+        <h2>Detecting Mood! Please hold on for a moment!</h2>
+
+        <!-- displays the resulting image -->
+        <div>
+            <img id="image" src="{{ url_for('image') }}" width="50%">
+        </div>
+
+    </body>
+    
+    <script>
+
+        // used for routing to results immediately
+        window.location.href = "{{ url_for('result') }}"
+
+    </script>
+
+</html>

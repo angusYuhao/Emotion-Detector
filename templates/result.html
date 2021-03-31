@@ -22,6 +22,17 @@
         </div>
 
         <h1 id="results">Your are currently: <br><span id="label">{{ label }}</strong></h1>
+            
+        <div>
+            <h3>
+                1st Dectection: {{ first_value }} ||
+                Probability: {{ "{:.2f}".format(first_perc) }}%
+            </h3>
+            <h3>
+                2nd Dectection: {{ second_value }} || 
+                Probability: {{ "{:.2f}".format(second_perc) }}%
+            </h3>
+        </div>
 
         <div>
             <form method="POST" action="/button_again">
