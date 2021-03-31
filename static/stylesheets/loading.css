@@ -1,0 +1,40 @@
+body {
+    background-color: #fafafa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    padding: 18px;
+    background: #c5cae9;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-left: 20px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#image {
+    position: relative;
+    float: left;
+    margin-left: 30px;
+}
+
+#loading {
+    display:inline-block;
+    margin-top: 220px;
+    margin-left: 100px;
+}

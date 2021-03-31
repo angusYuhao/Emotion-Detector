@@ -14,13 +14,17 @@
     </head>
     <body>
 
-        <h1 id="title">Mood detector</h1>
-
-        <h2>Detecting Mood! Please hold on for a moment!</h2>
+        <div class="header">
+            <p>Mood Detector</p>
+        </div>
 
         <!-- displays the resulting image -->
         <div>
             <img id="image" src="{{ url_for('image') }}" width="50%">
+        </div>
+
+        <div id="loading">
+            <h1>Detecting Mood! <br>Please hold on for a moment!</h1>
         </div>
 
     </body>

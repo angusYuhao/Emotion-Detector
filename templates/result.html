@@ -13,17 +13,19 @@
 
     </head>
     <body>
-        <h1 id="title">Mood detector</h1>
         
+        <div class="header">
+            <p>Mood Detector</p>
+        </div>
 
         <!-- displays the resulting image -->
         <div>
             <img id="image" src="{{ url_for('image') }}" width="50%">
         </div>
 
-        <h1 id="results">Your are currently: <br><span id="label">{{ label }}</strong></h1>
+        <div id="together">
+            <h1 id="results">Your are currently: <br><span id="label">{{ label }}</strong></h1>
             
-        <div>
             <h3>
                 1st Dectection: {{ first_value }} ||
                 Probability: {{ "{:.2f}".format(first_perc) }}%
@@ -32,9 +34,7 @@
                 2nd Dectection: {{ second_value }} || 
                 Probability: {{ "{:.2f}".format(second_perc) }}%
             </h3>
-        </div>
 
-        <div>
             <form method="POST" action="/button_again">
                 <input id="button_again" type="submit" value="Try Again!">
             </form>

@@ -3,11 +3,21 @@ body {
 }
 
 * {
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-#title {
-    margin-left: 30px;
+.header {
+    padding: 18px;
+    background: #c5cae9;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-left: 20px;
 }
 
 .center {
@@ -25,11 +35,12 @@ body {
 
 #results {
     font-size: 3em;
-    position: relative;
-    float: right;
-    margin-top: 100px;
-    margin-right: 200px;
-    overflow: hidden;
+}
+
+#together {
+    display:inline-block;
+    margin-top: 130px;
+    margin-left: 100px;
 }
 
 #label {
@@ -37,17 +48,20 @@ body {
     color: #d32f2f;
 }
 
+h3 {
+    font-size: 1.3em;
+    margin-top: 10px;
+}
+
 #button_again {
-    position: absolute;
-    left: auto;
-    right: 200px;
-    top: auto;
-    bottom: 300px;
+    position: relative;
+    float: right;
+    margin-top: 10px;
     outline: none;
     border: none;
     padding: 10px;
     border-radius: 5px;
-    background-color:  #512da8;
+    background-color:  #3949ab;
     color: white;
     cursor: pointer;
 }
