@@ -49,7 +49,7 @@ def get_image():
 def prediction(img):
     # load model 
     vgg_model = models.vgg16(pretrained=False)
-    vgg_model.classifier[6] = nn.Linear(4096, 7) # sets output classes to 7 emotions 
+    vgg_model.classifier[6] = nn.Linear(4096, 6) # sets output classes to 6 emotions 
     state = torch.load("model", map_location=torch.device('cpu'))
     vgg_model.load_state_dict(state)
 
@@ -58,8 +58,8 @@ def prediction(img):
     
     transform_img = transforms.Compose([transforms.CenterCrop(224), transforms.ToTensor(), 
                                         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]), 
-                                        transforms.RandomRotation((-10, 10), expand=False, center=None, fill=0, resample=None),
-                                        transforms.RandomHorizontalFlip(p=0.5), transforms.Grayscale(num_output_channels=3)])
+                                        expand=False, center=None, fill=0, resample=None),
+                                        transforms.Grayscale(num_output_channels=3)])
     
     img = transform_img(img)
     img = np.array(img)
@@ -76,7 +76,7 @@ def prediction(img):
     second_value, second_index = prob.max(0)
 
     max = 0
-    label_test = ["angry", "fatigue", "fear", "happy", "neutral", "sad", "surprise"]
+    label_test = ["angry", "fatigue", "happy", "neutral", "sad", "surprise"]
 
     for i, x in enumerate(pred):
         for j, y in enumerate(pred[i]):
