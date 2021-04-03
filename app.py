@@ -75,7 +75,7 @@ def prediction(img):
     second_value, second_index = prob.max(0)
 
     max = 0
-    label_test = ["angry", "fatigue", "fear", "happy", "neutral", "sad", "surprise"]
+    label_test = ["angry", "fatigued", "scared", "happy", "neutral", "sad", "surprised"]
 
     for i, x in enumerate(pred):
         for j, y in enumerate(pred[i]):
